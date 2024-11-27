@@ -1,14 +1,15 @@
 package com.DailyBuffer.DailyBuffer.Service;
 
 import com.DailyBuffer.DailyBuffer.Entity.Department;
+import com.DailyBuffer.DailyBuffer.Error.DepartmentNotFoundException;
 import com.DailyBuffer.DailyBuffer.Repository.DepartmentRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 
 @Service
@@ -28,9 +29,13 @@ public class DepartmentServiceImp implements DepartmentSercive {
     }
 
     @Override
-    public Department fetchDepartmentById(Long departmentId) {
-        return departmentRepository.findById(departmentId)
-                .orElseThrow(() -> new EntityNotFoundException("Department not   found"));
+    public Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException {
+       Optional<Department> department =  departmentRepository.findById(departmentId);
+
+          if(!department.isPresent()){
+                throw  new DepartmentNotFoundException("Department Not Availabe");
+          }
+          return department.get();
     }
 
     @Override

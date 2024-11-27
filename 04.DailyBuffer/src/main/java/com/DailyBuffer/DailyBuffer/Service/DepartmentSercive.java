@@ -1,6 +1,7 @@
 package com.DailyBuffer.DailyBuffer.Service;
 
 import com.DailyBuffer.DailyBuffer.Entity.Department;
+import com.DailyBuffer.DailyBuffer.Error.DepartmentNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface DepartmentSercive {
 
     List<Department> fetchDepartmentList();
 
-    Department fetchDepartmentById(Long departmentId);
+    Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException;
 
     void deleteDepartmentById(Long departmentId);
 
