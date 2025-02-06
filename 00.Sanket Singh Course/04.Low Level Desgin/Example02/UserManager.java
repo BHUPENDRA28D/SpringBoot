@@ -2,26 +2,19 @@ package Example02;
 
 public class UserManager {
 
-   /* public void crateUser(){}
 
-    public void deleteUser(){}
+    // create and delete is lifecycle and it can be in the manger class.
+   public void crateUser(String username){}
 
-    public void logUserIn(){}
-    
+    public void deleteUser(String username){}
+
+  /*   public void logUserIn(){}
+
     */
 }
 
-class CratignUser{
-
-    public void crateUser(UserManager userManager){}
-
-}
-
-class DeletingUser{
-    public void deleteUser(UserManager userManager){}
-}
 
 class LogUserIn{
 
-   public void logUserIn(UserManager userManager){}
+   public void logUserIn(String  username ){}
 }
