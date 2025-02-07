@@ -1,4 +1,4 @@
-package Lession2_Open_Close_Principle.Example3.ProblematicCode.BetterCode;
+package Lession2_Open_Close_Principle.Example3.BetterCode;
 
 public class ReportGenrator {
 
