@@ -10,11 +10,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 public class Todo {
 
         public int userId;
-        public int id;
+        public Long id;
         public String title;
         public boolean completed;
 
-    public Todo(int userId, int id, String title, boolean completed) {
+    public Todo(int userId, Long id, String title, boolean completed) {
         this.userId = userId;
         this.id = id;
         this.title = title;
@@ -29,11 +29,11 @@ public class Todo {
         this.userId = userId;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
