@@ -16,7 +16,7 @@ public class TodoController {
     public TodoController(){
         todosList = new ArrayList<>();
         todosList.add(new Todo(1,1,"Todo 1",false));
-        todosList.add(new Todo(1,1,"Todo 2",true));
+        todosList.add(new Todo(1,2,"Todo 2",true));
     }
 
 
@@ -40,5 +40,18 @@ public class TodoController {
     public ResponseEntity <Todo> createTodo(@RequestBody Todo newTodo){
         todosList.add(newTodo);
         return ResponseEntity.status(HttpStatus.CREATED).body(newTodo);
+    }
+
+
+    @GetMapping("/todos/{todoId}")
+    public ResponseEntity<?> getTodoById(@PathVariable Long todoId){
+        for(Todo todo :todosList){
+            if(todo.getId()== todoId){
+                return ResponseEntity.ok(todo);
+            }
+        }
+        // If not found, return JSON error response with status code 404
+        ApiErrorResponse errorResponse = new ApiErrorResponse(404, "Todo with ID " + todoId + " not found");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 }

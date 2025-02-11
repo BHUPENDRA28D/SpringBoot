@@ -52,4 +52,8 @@ public class Todo {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
+    public String notFoundMsg(String msg){
+        return msg;
+    }
 }
