@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController //Mapping automaticaly..
+//versioning of the apis
+@RestController
+@RequestMapping("/api/v1/todos") //Mapping automaticaly..
 public class TodoController {
 
     private static List<Todo> todosList;
@@ -20,7 +22,7 @@ public class TodoController {
     }
 
 
-    @GetMapping("/todos")
+    @GetMapping
     public List<Todo> getTodos(){
         return todosList;
     }
@@ -34,7 +36,7 @@ public class TodoController {
 
 
 
-    @PostMapping("/todos")
+    @PostMapping
   //other methode to response status
 
     public ResponseEntity <Todo> createTodo(@RequestBody Todo newTodo){
@@ -43,7 +45,7 @@ public class TodoController {
     }
 
 
-    @GetMapping("/todos/{todoId}")
+    @GetMapping("/{todoId}")
     public ResponseEntity<?> getTodoById(@PathVariable Long todoId){
         for(Todo todo :todosList){
             if(todo.getId()== todoId){
