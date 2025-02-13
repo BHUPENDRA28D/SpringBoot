@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ReviewService implements CommandLineRunner {
@@ -24,5 +25,11 @@ public class ReviewService implements CommandLineRunner {
                 .rating(4.5).build();
         System.out.println(r.toString());
         reviewRepository.save(r); //this code executes sql queries.
+
+
+        List<Review> reviewList = reviewRepository.findAll();
+        for(Review review: reviewList){
+            System.out.println(r.getContent());
+        }
     }
 }
