@@ -19,7 +19,7 @@ spring:
     username: root
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: update   #create  #validate.
     show-sql: true
 welcome:
   message: Welcome to Daily Code Buffer!!
