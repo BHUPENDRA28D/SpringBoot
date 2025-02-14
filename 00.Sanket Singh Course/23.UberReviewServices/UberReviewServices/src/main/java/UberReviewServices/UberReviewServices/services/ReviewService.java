@@ -20,8 +20,6 @@ public class ReviewService implements CommandLineRunner {
 
         //code to crate plane java object.
         Review r = Review.builder().content("Amazing quality of ride")
-                .createdAt(new Date())
-                .updatedAt(new Date())
                 .rating(4.5).build();
         System.out.println(r.toString());
         reviewRepository.save(r); //this code executes sql queries.
