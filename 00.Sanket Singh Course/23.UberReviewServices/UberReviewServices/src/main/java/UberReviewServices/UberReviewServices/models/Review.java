@@ -21,13 +21,18 @@ import java.util.function.DoubleToLongFunction;
 public class Review extends BaseModel {
 
 
-@Column(nullable = false)
-protected String content;
 
- protected Double rating ;
+ @Column(nullable = false)
+ private String content;
 
+ private Double rating;
 
- public String toString(){
-  return "Review : "+this.content+ " "+ this.rating+ " "+this.createdAt;
+ @OneToOne(mappedBy = "review") // mappedBy makes Booking the owning side
+ private Booking booking;  // Add this field
+
+ @Override
+ public String toString() {
+  return "Review: " + this.content + " " + this.rating + " " +  " " + this.createdAt;
  }
+
 }

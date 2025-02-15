@@ -1,0 +1,19 @@
+package UberReviewServices.UberReviewServices.models;
+
+import jakarta.persistence.Entity;
+
+public enum BookingStatus {
+
+    SCHEDULED,
+
+    CANCALED,
+    CAB_ARRIVED,
+
+    ASSIGING_DRIVEE,
+
+    IN_RIDE,
+
+    COMPLETED
+
+    //TO way to handel enum as string or numbers.
+}
