@@ -15,7 +15,7 @@ import java.util.Date;
 public class Booking extends BaseModel{
 
     //some composition we are trying to associate the entiy by composition.
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY)
    private Review review;  // defined a 1:1 relation btwn Booking and review;
 
     @Enumerated(EnumType.STRING)
