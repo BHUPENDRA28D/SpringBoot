@@ -72,7 +72,7 @@ public class ReviewService implements CommandLineRunner {
         }*/
 
 
-        Optional<Driver> driver = driverRepository.findById(1L);
+ /*       Optional<Driver> driver = driverRepository.findById(1L);
         if(driver.isPresent()){
             System.out.println(driver.get().getName());
           List<Booking> b=   driver.get().getBookings();
@@ -85,7 +85,15 @@ public class ReviewService implements CommandLineRunner {
 //       Optional<Booking>  b = bookingRepositry.findById(1L);
 //        if(b.isPresent()){
 //            System.out.println(b.get().getBookingStatus());
-//        }
+//        }*/
+
+
+//        Optional<Driver> d = driverRepository.rawFindByIdAndLicenseNumber(2L,"MP04SN9987");
+//        System.out.println(d.get().getName());
+
+        Optional<Driver> d = driverRepository.hqlFindByIdAndLicense(2L,"MP04SN9987");
+        System.out.println(d.get().getName());
+
     }
 
 
