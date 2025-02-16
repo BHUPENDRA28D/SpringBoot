@@ -27,8 +27,7 @@ public class Review extends BaseModel {
 
  private Double rating;
 
- @OneToOne(mappedBy = "review") // mappedBy makes Booking the owning side
- private Booking booking;  // Add this field
+
 
  @Override
  public String toString() {

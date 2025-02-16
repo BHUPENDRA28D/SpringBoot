@@ -10,23 +10,28 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReviewService implements CommandLineRunner {
 
     @Autowired
     private ReviewRepository reviewRepository;
-
     @Autowired
-    private BookingRepositry bookingRepository;
-
+    private BookingRepositry bookingRepositry;
 
 
     @Override
     public void run(String... args) throws Exception {
         System.out.println("*************");
 
-        Review r = Review.builder()
+        Optional<Booking> b = bookingRepositry.findById(4L);
+        if(b.isPresent()){
+            bookingRepositry.delete(b.get());
+        }
+
+
+      /*  Review r = Review.builder()
                 .content("Amazing ride quality")
                 .rating(4.0)
                 .build();
@@ -36,16 +41,18 @@ public class ReviewService implements CommandLineRunner {
                 .endTime(new Date())
                 .build();
 
-        r.setBooking(b); // Ensure Review has a reference to Booking
 
-        bookingRepository.save(b); // This will save both Booking and Review
-
+//        reviewRepository.save(r); // this code create sql query.
+        bookingRepositry.save(b);
         System.out.println(r);
 
         List<Review> reviewList = reviewRepository.findAll();
         for (Review review : reviewList) {
             System.out.println(review.getContent());
-        }
+        }*/
+
+
+
     }
 
 

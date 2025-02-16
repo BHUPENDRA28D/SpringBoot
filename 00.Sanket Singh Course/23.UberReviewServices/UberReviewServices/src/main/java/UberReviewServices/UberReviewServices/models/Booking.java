@@ -2,29 +2,31 @@ package UberReviewServices.UberReviewServices.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.engine.spi.CascadeStyle;
 
 import java.util.Date;
 
-@Entity
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Booking extends BaseModel{
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    private Review review; // 1:1 relation b/w booking and review.
+    //some composition we are trying to associate the entiy by composition.
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+   private Review review;  // defined a 1:1 relation btwn Booking and review;
 
-    @Enumerated(value = EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private BookingStatus bookingStatus;
 
-    @Temporal(value = TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
 
-    @Temporal(value = TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date endTime;
 
-    private Long totalDistance;
 
+    private Long totalDistance;
 }
