@@ -10,7 +10,7 @@ public enum BookingStatus {
 
     CAB_ARRIVED,
 
-    ASSIGING_DRIVEE,
+    ASSIGING_DRIVERE,
 
     IN_RIDE,
 

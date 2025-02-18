@@ -5,9 +5,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -26,7 +30,9 @@ public class Driver extends  BaseModel {
 
     // 1:m ,Driver :Booking..\
 
-    @OneToMany(mappedBy = "driver",fetch = FetchType.EAGER)
-    private List<Booking> bookings = new ArrayList<>();
+    @OneToMany(mappedBy = "driver",fetch = FetchType.LAZY)
+
+    @Fetch(value=FetchMode.JOIN)
+    private Set<Booking> bookings = new HashSet<>();
 
 }

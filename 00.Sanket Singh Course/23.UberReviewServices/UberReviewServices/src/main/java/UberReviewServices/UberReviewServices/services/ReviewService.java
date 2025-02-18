@@ -1,6 +1,7 @@
 package UberReviewServices.UberReviewServices.services;
 
 import UberReviewServices.UberReviewServices.models.Booking;
+import UberReviewServices.UberReviewServices.models.CustomDriver;
 import UberReviewServices.UberReviewServices.models.Driver;
 import UberReviewServices.UberReviewServices.models.Review;
 import UberReviewServices.UberReviewServices.repositories.BookingRepositry;
@@ -10,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ReviewService implements CommandLineRunner {
@@ -91,10 +90,23 @@ public class ReviewService implements CommandLineRunner {
 //        Optional<Driver> d = driverRepository.rawFindByIdAndLicenseNumber(2L,"MP04SN9987");
 //        System.out.println(d.get().getName());
 
-        Optional<Driver> d = driverRepository.hqlFindByIdAndLicense(2L,"MP04SN9987");
-        System.out.println(d.get().getName());
+//    CustomDriver d = driverRepository.hqlFindByIdAndLicense(1L,"DL7761");
+//    System.out.println(d.get().getName());
+
+
+
+
+        List<Long> driver_ids = new ArrayList<>(Arrays.asList(1L,2L));
+        List<Driver> drivers= driverRepository.findAllByIdIn(driver_ids);
+//        List<Booking> bookings = bookingRepositry.findAllByDriverIn(drivers);
+
+        for(Driver driver :drivers){  // this creates N+1 problem!
+            Set<Booking> bookings = driver.getBookings();
+            bookings.forEach(booking -> System.out.println(booking.getId()));
+        }
 
     }
+
 
 
 
