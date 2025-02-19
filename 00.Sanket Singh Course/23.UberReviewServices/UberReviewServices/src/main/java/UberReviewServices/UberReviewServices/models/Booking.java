@@ -33,6 +33,6 @@ public class Booking extends BaseModel{
     @ManyToOne(fetch=FetchType.LAZY)
     private Driver driver;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Passenger passenger;
 }

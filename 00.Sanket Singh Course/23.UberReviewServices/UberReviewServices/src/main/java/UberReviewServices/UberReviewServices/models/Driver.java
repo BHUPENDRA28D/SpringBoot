@@ -32,7 +32,7 @@ public class Driver extends  BaseModel {
 
     @OneToMany(mappedBy = "driver",fetch = FetchType.LAZY)
 
-    @Fetch(value=FetchMode.JOIN)
-    private Set<Booking> bookings = new HashSet<>();
+    @Fetch(value=FetchMode.SUBSELECT)
+    private List<Booking> bookings;
 
 }

@@ -7,6 +7,7 @@ import UberReviewServices.UberReviewServices.models.Review;
 import UberReviewServices.UberReviewServices.repositories.BookingRepositry;
 import UberReviewServices.UberReviewServices.repositories.DriverRepository;
 import UberReviewServices.UberReviewServices.repositories.ReviewRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,7 @@ public class ReviewService implements CommandLineRunner {
 
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         System.out.println("*************");
 
@@ -96,13 +98,20 @@ public class ReviewService implements CommandLineRunner {
 
 
 
-        List<Long> driver_ids = new ArrayList<>(Arrays.asList(1L,2L));
+        List<Long> driver_ids = new ArrayList<>(Arrays.asList(1L,2L,3L,4L,5L,6L,7L,8L));
         List<Driver> drivers= driverRepository.findAllByIdIn(driver_ids);
+
+        // Custom implementation..
 //        List<Booking> bookings = bookingRepositry.findAllByDriverIn(drivers);
 
+
         for(Driver driver :drivers){  // this creates N+1 problem!
-            Set<Booking> bookings = driver.getBookings();
-            bookings.forEach(booking -> System.out.println(booking.getId()));
+
+//            System.out.println(drivers.getFirst().getId());
+
+
+           List<Booking> bookings = driver.getBookings();
+           bookings.forEach(booking -> System.out.println(booking.getId()));
         }
 
     }
