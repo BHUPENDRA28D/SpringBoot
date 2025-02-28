@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.engine.spi.CascadeStyle;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,9 +15,9 @@ import java.util.Date;
 @Entity
 public class Booking extends BaseModel{
 
-    //some composition we are trying to associate the entiy by composition.
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY)
-   private Review review;  // defined a 1:1 relation btwn Booking and review;
+/*    //some composition we are trying to associate the entiy by composition.
+    @OneToMany(mappedBy = "booking", cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY)
+   private Review review;  // defined a 1:1 relation btwn Booking and review;*/
 
     @Enumerated(EnumType.STRING)
     private BookingStatus bookingStatus;

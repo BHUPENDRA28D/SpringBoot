@@ -15,7 +15,25 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class ReviewService implements CommandLineRunner {
+public interface ReviewService {
+
+    public Optional<Review> findReviewById(Long id);
+
+    public List<Review> findAllReviews();
+
+    public boolean deleteReviewById(Long id);
+
+    public Review publishReview(Review review);
+
+    public Review updateReview(Long id, Review review);
+
+
+}
+
+
+
+
+/*public class ReviewService implements CommandLineRunner {
 
     @Autowired
     private ReviewRepository reviewRepository;
@@ -53,13 +71,13 @@ public class ReviewService implements CommandLineRunner {
         List<Review> reviewList = reviewRepository.findAll();
         for (Review review : reviewList) {
             System.out.println(review.getContent());
-        }*/
+        }*//*
 
 
-        /*  Optional<Booking> b = bookingRepositry.findById(4L);
+        *//*  Optional<Booking> b = bookingRepositry.findById(4L);
         if(b.isPresent()){
             bookingRepositry.delete(b.get());
-        }*/
+        }*//*
 
 
 
@@ -67,13 +85,13 @@ public class ReviewService implements CommandLineRunner {
 //      List<Driver> drivers = driverRepository.findAll();
 
 
-      /*  Optional<Driver> driver = driverRepository.findByIdAndLicenseNumber(1L,"DL7761");
+      *//*  Optional<Driver> driver = driverRepository.findByIdAndLicenseNumber(1L,"DL7761");
         if(driver.isPresent()){
             System.out.println(driver.get().getName());
-        }*/
+        }*//*
 
 
- /*       Optional<Driver> driver = driverRepository.findById(1L);
+ *//*       Optional<Driver> driver = driverRepository.findById(1L);
         if(driver.isPresent()){
             System.out.println(driver.get().getName());
           List<Booking> b=   driver.get().getBookings();
@@ -86,7 +104,7 @@ public class ReviewService implements CommandLineRunner {
 //       Optional<Booking>  b = bookingRepositry.findById(1L);
 //        if(b.isPresent()){
 //            System.out.println(b.get().getBookingStatus());
-//        }*/
+//        }*//*
 
 
 //        Optional<Driver> d = driverRepository.rawFindByIdAndLicenseNumber(2L,"MP04SN9987");
@@ -120,4 +138,4 @@ public class ReviewService implements CommandLineRunner {
 
 
 
-}
+} */

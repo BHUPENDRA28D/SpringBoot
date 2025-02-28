@@ -1,5 +1,6 @@
 package UberReviewServices.UberReviewServices.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -27,7 +28,9 @@ public class Review extends BaseModel {
 
  private Double rating;
 
-
+ @OneToOne(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
+ @JoinColumn(nullable = false)
+ private Booking booking;
 
  @Override
  public String toString() {
